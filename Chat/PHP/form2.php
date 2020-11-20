@@ -28,8 +28,10 @@ var request = new XMLHttpRequest();
 request.open("POST", "./PHP/AddUserInformation.php",true);
 request.onload = function() {
     if (request.status == 200 && request.readyState == 4  ) {
-   		document.getElementById("Form2").remove();
-		document.getElementById("result").innerHTML=request.responseText;
+   		if(document.getElementById("Form2")!=null)
+		{
+			document.getElementById("Form2").remove();
+		}document.getElementById("result").innerHTML=request.responseText;
 	   } else {
       Output.innerHTML = "Error " + request.status + " occurred when trying to upload your file.<br/>";
     }
